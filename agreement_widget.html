@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian House Oman - Course Agreement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .widget-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #d4164e 0%, #a01240 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .header h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 2rem;
+        }
+        
+        .agreement-text {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            max-height: 500px;
+            overflow-y: auto;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        .agreement-text h3 {
+            color: #d4164e;
+            font-size: 16px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            border-bottom: 2px solid #d4164e;
+            padding-bottom: 0.5rem;
+        }
+        
+        .agreement-text h3:first-child {
+            margin-top: 0;
+        }
+        
+        .agreement-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .agreement-text strong {
+            color: #d4164e;
+            font-weight: 600;
+        }
+        
+        .agreement-text ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .agreement-text li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .scroll-hint {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .checkboxes-section {
+            background: #fff3f5;
+            border: 1.5px solid #d4164e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkboxes-section h3 {
+            color: #d4164e;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 12px;
+        }
+        
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
+            accent-color: #d4164e;
+        }
+        
+        .checkbox-label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .checkbox-label strong {
+            color: #d4164e;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .submit-section {
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #d4164e 0%, #a01240 100%);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 200ms ease;
+            box-shadow: 0 4px 12px rgba(212, 22, 78, 0.3);
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212, 22, 78, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            color: #999;
+            cursor: not-allowed;
+            box-shadow: none;
+            opacity: 0.6;
+        }
+        
+        .submit-btn.success {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+        }
+        
+        .status-message {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 14px;
+            font-weight: 600;
+            min-height: 24px;
+        }
+        
+        .status-message.error {
+            color: #d4164e;
+        }
+        
+        .status-message.success {
+            color: #27ae60;
+        }
+        
+        .footer {
+            background: #f9f9f9;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        
+        .footer strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+        
+        /* Scrollbar styling */
+        .agreement-text::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .agreement-text::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .agreement-text::-webkit-scrollbar-thumb {
+            background: #d4164e;
+            border-radius: 10px;
+        }
+        
+        .agreement-text::-webkit-scrollbar-thumb:hover {
+            background: #a01240;
+        }
+        
+        @media (max-width: 600px) {
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .agreement-text {
+                padding: 1rem;
+                font-size: 13px;
+            }
+            
+            .header h2 {
+                font-size: 20px;
+            }
+            
+            .submit-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="widget-container">
+        <div class="header">
+            <h2>🇷🇺 Introduction to Russian</h2>
+            <p>Course Agreement & Terms</p>
+        </div>
+        
+        <div class="content">
+            <div class="agreement-text">
+                <h3>1. ENROLLMENT & PAYMENT</h3>
+                <p>By enrolling in the Introduction to Russian course (June 1 – July 15, 2026), you agree to pay the full course fee.</p>
+                <p><strong>Course Fee:</strong></p>
+                <ul>
+                    <li>Early Bird Price: 150 OMR (register before May 28)</li>
+                    <li>Regular Course Fee: 180 OMR</li>
+                </ul>
+                <p><strong>Payment is due no later than after Lesson 1.</strong></p>
+                
+                <h3>2. REFUND POLICY</h3>
+                <p><strong>FULL REFUND:</strong> A full refund is available if you cancel no later than after the first class.</p>
+                <p><strong>NO REFUND:</strong> Once the second class has commenced, no refund will be issued under any circumstances.</p>
+                <p><strong>NO COURSE MODIFICATIONS:</strong> This is a 6-week intensive course. No changes to the course schedule or level are permitted.</p>
+                
+                <h3>3. COURSE ATTENDANCE</h3>
+                <p>Students are responsible for attending all scheduled classes. Russian House Oman reserves the right to cancel the course if enrollment falls below 3 students. In such cases:</p>
+                <ul>
+                    <li>Students will be offered alternative courses at the same level, or</li>
+                    <li>Students will receive a full refund</li>
+                    <li>Students will be notified before classes start</li>
+                </ul>
+                
+                <h3>4. STUDENT CONDUCT</h3>
+                <p>Students agree to maintain respectful behavior toward instructors, staff, and fellow students. Russian House Oman reserves the right to terminate enrollment without refund for harassment, disruptive behavior, or misconduct.</p>
+                
+                <h3>5. MISSED CLASSES</h3>
+                <p>If you miss a class, you will receive independent study materials for the missed topic. Classes are not rescheduled.</p>
+                
+                <h3>6. COURSE MATERIALS</h3>
+                <p>All course materials will be provided by Russian House Oman.</p>
+                
+                <h3>7. LIMITATION OF LIABILITY</h3>
+                <p>Classes are held at ABA School facilities. Russian House Oman is not responsible for personal injury, loss, or damage to property. Students participate at their own risk.</p>
+                
+                <h3>8. DATA PRIVACY & VIDEO/AUDIO RECORDING</h3>
+                <p>Student personal data is collected for:</p>
+                <ul>
+                    <li>Course enrollment and administration</li>
+                    <li>Course communication</li>
+                    <li>Issuing certificates upon course completion</li>
+                    <li>Social media promotion (Instagram and other platforms for marketing)</li>
+                </ul>
+                
+                <h3>9. COURSE COMPLETION & CERTIFICATE</h3>
+                <p><strong>Certificate Requirements:</strong></p>
+                <ul>
+                    <li>Minimum 80% attendance</li>
+                    <li>No outstanding fees</li>
+                </ul>
+                <p><strong>Certificate Benefits:</strong></p>
+                <ul>
+                    <li>Official certificate of completion from Russian House Oman</li>
+                    <li>Discount on the next level course</li>
+                </ul>
+                <p><strong>Certificate Delivery:</strong> Certificates will be officially delivered in person at the course completion ceremony.</p>
+                
+                <h3>10. ENTIRE AGREEMENT</h3>
+                <p>This agreement constitutes the entire agreement between you and Russian House Oman regarding this course.</p>
+                
+                <div class="scroll-hint">✓ Scroll to review all terms</div>
+            </div>
+            
+            <div class="checkboxes-section">
+                <h3>✓ Course Agreement Acceptance</h3>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="agree-terms" class="agreement-checkbox">
+                    <label for="agree-terms" class="checkbox-label">
+                        <strong>I have read and agree to all terms and conditions</strong>
+                        I understand the refund policy: full refund only no later than after Lesson 1; no refund after Lesson 2 starts
+                    </label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="agree-video" class="agreement-checkbox">
+                    <label for="agree-video" class="checkbox-label">
+                        <strong>I consent to video/audio recording for social media</strong>
+                        My image and voice may be used on Instagram and other platforms for promotional purposes
+                    </label>
+                </div>
+                
+                <div class="checkbox-item">
+                    <input type="checkbox" id="agree-payment" class="agreement-checkbox">
+                    <label for="agree-payment" class="checkbox-label">
+                        <strong>I agree to the payment terms</strong>
+                        Payment of 150 OMR or 180 OMR is due no later than after Lesson 1
+                    </label>
+                </div>
+            </div>
+            
+            <div class="submit-section">
+                <button id="submit-btn" class="submit-btn" disabled>
+                    ✓ Accept Agreement & Continue
+                </button>
+                <div id="status-message" class="status-message"></div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <strong>RUSSIAN HOUSE OMAN</strong>
+            Introduction to Russian Course | June 1 – July 15, 2026
+        </div>
+    </div>
+    
+    <script>
+        const checkboxes = document.querySelectorAll('.agreement-checkbox');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusMessage = document.getElementById('status-message');
+        
+        // Check if all checkboxes are checked
+        function updateSubmitBtn() {
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            submitBtn.disabled = !allChecked;
+            
+            if (allChecked) {
+                statusMessage.textContent = '';
+            }
+        }
+        
+        // Add event listeners to checkboxes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSubmitBtn);
+        });
+        
+        // Handle submit button click
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get checkbox values
+            const agreementData = {
+                termsAccepted: document.getElementById('agree-terms').checked,
+                videoAccepted: document.getElementById('agree-video').checked,
+                paymentAccepted: document.getElementById('agree-payment').checked,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Log to console (for debugging)
+            console.log('Agreement Data:', agreementData);
+            
+            // Show success message
+            submitBtn.textContent = '✓ Agreement Accepted';
+            submitBtn.classList.add('success');
+            submitBtn.disabled = true;
+            statusMessage.textContent = 'Your agreement has been recorded. You can now submit the form.';
+            statusMessage.classList.add('success');
+            
+            // Store data in localStorage (optional)
+            localStorage.setItem('russianHouseAgreement', JSON.stringify(agreementData));
+            
+            // Trigger Google Form submit if embedded
+            // This allows the form to be submitted automatically
+            setTimeout(() => {
+                // Look for Google Form's submit button
+                const googleFormSubmit = document.querySelector('[aria-label="Submit"], button[type="submit"]');
+                if (googleFormSubmit) {
+                    googleFormSubmit.click();
+                }
+            }, 1500);
+        });
+        
+        // Initial check
+        updateSubmitBtn();
+    </script>
+</body>
+</html>
